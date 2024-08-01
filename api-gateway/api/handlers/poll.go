@@ -114,6 +114,7 @@ func (h *HTTPHandler) GetPollByID(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, res)
+	c.JSON(http.StatusOK, gin.H{"message": "Question created successfully"})
 }
 
 // GetAllPolls godoc
