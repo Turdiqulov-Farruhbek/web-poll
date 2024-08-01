@@ -4,6 +4,7 @@ import (
 	pb "auth-service/genprotos"
 	"context"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -23,13 +24,12 @@ import (
 func (h *HTTPHandler) CreatePoll(c *gin.Context) {
 	var req pb.PollCreateReq
 	if err := c.BindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"Invalid request payload": err.Error()})
+		c.JSON(http.StatusBadRequest, "Invalid request payload: "+err.Error())
 		return
 	}
-
 	_, err := h.Poll.Create(context.Background(), &req)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Server error", "details": err.Error()})
+		c.JSON(http.StatusInternalServerError, "Server error: "+err.Error())
 		return
 	}
 
@@ -114,7 +114,6 @@ func (h *HTTPHandler) GetPollByID(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, res)
-	c.JSON(http.StatusOK, gin.H{"message": "Question created successfully"})
 }
 
 // GetAllPolls godoc
@@ -131,11 +130,13 @@ func (h *HTTPHandler) GetPollByID(c *gin.Context) {
 // @Security BearerAuth
 func (h *HTTPHandler) GetAllPolls(c *gin.Context) {
 	var req pb.PollGetAllReq
-	if limit := c.Query("limit"); limit != "" {
-		req.Pagination.Limit = 1
-	}
-	if offset := c.Query("offset"); offset != "" {
-		req.Pagination.Offset = 10
+	limit, offset := 10, 0
+	limitStr, offsetStr := c.Query("limit"), c.Query("offset")
+	limit, _ = strconv.Atoi(limitStr)
+	offset, _ = strconv.Atoi(offsetStr)
+	req.Pagination = &pb.Pagination{
+		Limit:  int64(limit),
+		Offset: int64(offset),
 	}
 
 	res, err := h.Poll.GetAll(context.Background(), &req)

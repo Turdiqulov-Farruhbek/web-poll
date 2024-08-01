@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS polls (
 -- Create questions table
 CREATE TABLE IF NOT EXISTS questions (
     id UUID PRIMARY KEY,
-    num INT NOT NULL,
+    num INT NOT NULL UNIQUE,
     content TEXT NOT NULL,
     poll_id UUID REFERENCES polls(id) ON DELETE CASCADE
 );

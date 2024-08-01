@@ -19,7 +19,7 @@ service PollService {
 message PollCreateReq {
     int32 poll_num = 1;
     string title = 2;
-    string options = 3; // JSONB is stored as a string
+    map<string, string> options = 3; // JSONB is stored as a string
 }
 
 message PollUpdateReq {
@@ -38,7 +38,6 @@ message PollGetByIDRes {
 message PollGetAllReq {
     Pagination Pagination = 1;
 }
-
 
 message PollGetAllRes {
     repeated PollGetByIDRes poll = 1;

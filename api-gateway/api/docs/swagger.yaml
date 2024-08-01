@@ -9,8 +9,10 @@ definitions:
   genprotos.PollCreateReq:
     properties:
       options:
+        additionalProperties:
+          type: string
         description: JSONB is stored as a string
-        type: string
+        type: object
       poll_num:
         type: integer
       title:
@@ -601,14 +603,12 @@ paths:
       description: Get all questions with pagination
       parameters:
       - description: Limit
-        in: path
+        in: query
         name: limit
-        required: true
         type: integer
       - description: Offset
-        in: path
+        in: query
         name: offset
-        required: true
         type: integer
       produces:
       - application/json

@@ -686,15 +686,13 @@ const docTemplate = `{
                         "type": "integer",
                         "description": "Limit",
                         "name": "limit",
-                        "in": "path",
-                        "required": true
+                        "in": "query"
                     },
                     {
                         "type": "integer",
                         "description": "Offset",
                         "name": "offset",
-                        "in": "path",
-                        "required": true
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -841,7 +839,10 @@ const docTemplate = `{
             "properties": {
                 "options": {
                     "description": "JSONB is stored as a string",
-                    "type": "string"
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
                 },
                 "poll_num": {
                     "type": "integer"

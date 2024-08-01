@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -114,8 +115,8 @@ func (h *HTTPHandler) GetQuestionByID(c *gin.Context) {
 // @Tags question
 // @Accept json
 // @Produce json
-// @Param limit path int true "Limit"
-// @Param offset path int true "Offset"
+// @Param limit query int false "Limit"
+// @Param offset query int false "Offset"
 // @Success 200 {object} pb.QuestionGetAllRes
 // @Failure 400 {object} string "Invalid request payload"
 // @Failure 500 {object} string "Server error"
@@ -123,11 +124,16 @@ func (h *HTTPHandler) GetQuestionByID(c *gin.Context) {
 // @Security BearerAuth
 func (h *HTTPHandler) GetAllQuestions(c *gin.Context) {
 	var req pb.QuestionGetAllReq
-	limitStr, offsetStr := c.Param("limit"), c.Param("offset")
-	limit, _ := strconv.Atoi(limitStr)
-	offset, _ := strconv.Atoi(offsetStr)
-	req.Pagination.Limit = int64(limit)
-	req.Pagination.Offset = int64(offset)
+	limit, offset := 10, 0
+	limitStr, offsetStr := c.Query("limit"), c.Query("offset")
+	fmt.Println(limitStr, offsetStr)
+	limit, _ = strconv.Atoi(limitStr)
+	offset, _ = strconv.Atoi(offsetStr)
+
+	req.Pagination = &pb.Pagination{
+		Limit:  int64(limit),
+		Offset: int64(offset),
+	}
 
 	if err := c.ShouldBindQuery(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
