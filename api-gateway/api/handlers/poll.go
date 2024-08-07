@@ -16,7 +16,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param poll body pb.PollCreateReq true "Poll creation request"
-// @Success 201 {object} pb.Void
+// @Success 201 {object} string "Successfully created!"
 // @Failure 400 {object} string "Invalid request payload"
 // @Failure 500 {object} string "Server error"
 // @Router /poll [post]
@@ -33,7 +33,7 @@ func (h *HTTPHandler) CreatePoll(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, &pb.Void{})
+	c.JSON(http.StatusCreated, gin.H{"message": "Successfully created!"})
 }
 
 // UpdatePoll godoc
@@ -43,7 +43,7 @@ func (h *HTTPHandler) CreatePoll(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param poll body pb.PollUpdateReq true "Poll update request"
-// @Success 200 {object} pb.Void
+// @Success 200 {object} string "Successfully updated"
 // @Failure 400 {object} string "Invalid request payload"
 // @Failure 404 {object} string "Poll not found"
 // @Failure 500 {object} string "Server error"
@@ -62,7 +62,7 @@ func (h *HTTPHandler) UpdatePoll(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, &pb.Void{})
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully updated"})
 }
 
 // DeletePoll godoc
@@ -72,7 +72,7 @@ func (h *HTTPHandler) UpdatePoll(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param id path string true "Poll ID"
-// @Success 200 {object} pb.Void
+// @Success 200 {object} string "Successfully deleted!"
 // @Failure 400 {object} string "Invalid request payload"
 // @Failure 404 {object} string "Poll not found"
 // @Failure 500 {object} string "Server error"
@@ -88,7 +88,7 @@ func (h *HTTPHandler) DeletePoll(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, &pb.Void{})
+	c.JSON(http.StatusOK, gin.H{"message": "Successfully deleted!"})
 }
 
 // GetPollByID godoc

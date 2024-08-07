@@ -7,14 +7,6 @@ BEGIN
 END
 $$;
 
--- Create the enum type for level
-DO $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'level_type') THEN
-        CREATE TYPE level_type AS ENUM ('junior', 'middle', 'senior');
-    END IF;
-END
-$$;
 
 -- Create users table
 CREATE TABLE IF NOT EXISTS users (
@@ -26,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
     working_experience INT CHECK (working_experience >= 0),
-    level level_type NOT NULL,
+    level_type VARCHAR NOT NULL,
     is_confirmed BOOLEAN DEFAULT FALSE,
     role VARCHAR(20) DEFAULT 'user',
     confirmed_at TIMESTAMP
@@ -43,7 +35,22 @@ CREATE TABLE IF NOT EXISTS polls (
 -- Create questions table
 CREATE TABLE IF NOT EXISTS questions (
     id UUID PRIMARY KEY,
-    num INT NOT NULL UNIQUE,
+    num INT NOT NULL,
     content TEXT NOT NULL,
+    poll_id UUID REFERENCES polls(id) ON DELETE CASCADE,
+    UNIQUE (poll_id, num)
+);
+
+-- ############# Storing Results
+CREATE TABLE IF NOT EXISTS results (
+    id UUID PRIMARY KEY,
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     poll_id UUID REFERENCES polls(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS poll_answers (
+    id UUID PRIMARY KEY,
+    result_id UUID REFERENCES results(id) ON DELETE CASCADE,
+    question_num INT,
+    answer INT
 );

@@ -43,7 +43,6 @@ func (h *HTTPHandler) CreateQuestion(c *gin.Context) {
 // @Tags question
 // @Accept json
 // @Produce json
-// @Param id path string true "Question ID"
 // @Param question body pb.QuestionUpdateReq true "Question update request"
 // @Success 200 {object} string "Question updated successfully"
 // @Failure 400 {object} string "Invalid request payload"
@@ -52,7 +51,6 @@ func (h *HTTPHandler) CreateQuestion(c *gin.Context) {
 // @Security BearerAuth
 func (h *HTTPHandler) UpdateQuestion(c *gin.Context) {
 	var req pb.QuestionUpdateReq
-	req.Id = c.Param("id")
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return

@@ -111,7 +111,7 @@ definitions:
         type: string
       gender:
         type: string
-      level:
+      level_type:
         type: string
       name:
         type: string
@@ -123,8 +123,6 @@ definitions:
         type: string
       working_experience:
         type: integer
-    type: object
-  genprotos.Void:
     type: object
   models.ConfirmRegistrationReq:
     properties:
@@ -300,9 +298,9 @@ paths:
       - application/json
       responses:
         "201":
-          description: Created
+          description: Successfully created!
           schema:
-            $ref: '#/definitions/genprotos.Void'
+            type: string
         "400":
           description: Invalid request payload
           schema:
@@ -331,9 +329,9 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: Successfully updated
           schema:
-            $ref: '#/definitions/genprotos.Void'
+            type: string
         "400":
           description: Invalid request payload
           schema:
@@ -366,9 +364,9 @@ paths:
       - application/json
       responses:
         "200":
-          description: OK
+          description: Successfully deleted!
           schema:
-            $ref: '#/definitions/genprotos.Void'
+            type: string
         "400":
           description: Invalid request payload
           schema:
@@ -512,11 +510,6 @@ paths:
       - application/json
       description: Update an existing question with the given details
       parameters:
-      - description: Question ID
-        in: path
-        name: id
-        required: true
-        type: string
       - description: Question update request
         in: body
         name: question
@@ -698,6 +691,31 @@ paths:
       summary: Register a new user
       tags:
       - registration
+  /results:
+    get:
+      consumes:
+      - application/json
+      description: Get overall results writing in excel file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: file
+        "404":
+          description: Poll not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get results in excel file
+      tags:
+      - results
 securityDefinitions:
   BearerAuth:
     in: header

@@ -64,18 +64,6 @@ func (h *HTTPHandler) Register(c *gin.Context) {
 		c.JSON(400, "Invalid gender format")
 	}
 
-	var level int
-	if req.Level == "junior" {
-		level = 0
-	} else if req.Level == "middle" {
-		level = 1
-	} else if req.Level == "senior" {
-		level = 2
-	} else {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid level format"})
-		return
-	}
-
 	_, err = h.User.Register(c,
 		&pb.RegisterReq{
 			Password:          req.Password,
@@ -85,7 +73,7 @@ func (h *HTTPHandler) Register(c *gin.Context) {
 			Gender:            pb.GenderType(gender),
 			PhoneNumber:       req.PhoneNumber,
 			WorkingExperience: req.WorkingExperience,
-			Level:             pb.LevelType(level),
+			LevelType:             req.LevelType,
 		})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Server error", "err": err.Error()})

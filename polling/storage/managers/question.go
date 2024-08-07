@@ -63,6 +63,11 @@ func (m *QuestionManager) GetAll(ctx context.Context, req *pb.QuestionGetAllReq)
 	query := "SELECT id, num, content, poll_id FROM questions"
 	var args []interface{}
 	paramIndex := 1
+	if req.PollId != "" {
+		query += fmt.Sprintf(" WHERE poll_id = $%d", paramIndex)
+		args = append(args, req.PollId)
+		paramIndex++
+	}
 	if req.Pagination.Limit != 0 {
 		query += fmt.Sprintf(" LIMIT $%d", paramIndex)
 		args = append(args, req.Pagination.Limit)

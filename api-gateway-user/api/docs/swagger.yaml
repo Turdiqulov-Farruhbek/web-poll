@@ -1,0 +1,60 @@
+definitions:
+  genprotos.IncomingAnswer:
+    properties:
+      answer_point:
+        type: integer
+      num:
+        type: integer
+    type: object
+  genprotos.IncomingResult:
+    properties:
+      answers:
+        items:
+          $ref: '#/definitions/genprotos.IncomingAnswer'
+        type: array
+      poll_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /send-answers:
+    post:
+      consumes:
+      - application/json
+      description: incoming results of user
+      parameters:
+      - description: Poll creation request
+        in: body
+        name: poll
+        required: true
+        schema:
+          $ref: '#/definitions/genprotos.IncomingResult'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Successfully posted
+          schema:
+            type: string
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Handles results
+      tags:
+      - answer
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 	pb "poll-service/genprotos"
 	"time"
 
@@ -28,17 +27,8 @@ func (m *UserManager) Register(context context.Context, req *pb.RegisterReq) (*p
 		gender = "female"
 	}
 
-	var level string
-	if req.Level == 0 {
-		level = "junior"
-	} else if req.Level == 1 {
-		level = "middle"
-	} else {
-		level = "senior"
-	}
-
-	query := "INSERT INTO users (id, name, surname, gender, email, password, phone_number, working_experience, level) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
-	_, err := m.Conn.Exec(query, uuid.NewString(), req.Name, req.Surname, gender, req.Email, req.Password, req.PhoneNumber, req.WorkingExperience, level)
+	query := "INSERT INTO users (id, name, surname, gender, email, password, phone_number, working_experience, level_type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+	_, err := m.Conn.Exec(query, uuid.NewString(), req.Name, req.Surname, gender, req.Email, req.Password, req.PhoneNumber, req.WorkingExperience, req.LevelType)
 	return nil, err
 }
 
@@ -71,8 +61,6 @@ func (m *UserManager) UpdatePassword(context context.Context, req *pb.UpdatePass
 
 func (m *UserManager) IsEmailExists(context context.Context, email *pb.IsEmailExistsReq) (*pb.IsEmailExistsResp, error) {
 	query := "SELECT COUNT(*) FROM users WHERE email = $1"
-	fmt.Println(1)
-	fmt.Println(email.Email)
 	var count int
 	err := m.Conn.QueryRow(query, email.Email).Scan(&count)
 	if err != nil {
@@ -81,8 +69,6 @@ func (m *UserManager) IsEmailExists(context context.Context, email *pb.IsEmailEx
 	if count > 0 {
 		return &pb.IsEmailExistsResp{Exists: true}, nil
 	}
-	fmt.Println(2)
-	fmt.Println("count: ", count)
 	return &pb.IsEmailExistsResp{Exists: false}, nil
 }
 

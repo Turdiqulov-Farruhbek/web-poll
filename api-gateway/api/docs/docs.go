@@ -201,9 +201,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Successfully updated",
                         "schema": {
-                            "$ref": "#/definitions/genprotos.Void"
+                            "type": "string"
                         }
                     },
                     "400": {
@@ -256,9 +256,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created",
+                        "description": "Successfully created!",
                         "schema": {
-                            "$ref": "#/definitions/genprotos.Void"
+                            "type": "string"
                         }
                     },
                     "400": {
@@ -352,9 +352,9 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Successfully deleted!",
                         "schema": {
-                            "$ref": "#/definitions/genprotos.Void"
+                            "type": "string"
                         }
                     },
                     "400": {
@@ -491,13 +491,6 @@ const docTemplate = `{
                 ],
                 "summary": "Update an existing question",
                 "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Question ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    },
                     {
                         "description": "Question update request",
                         "name": "question",
@@ -820,6 +813,46 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/results": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get overall results writing in excel file",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "results"
+                ],
+                "summary": "Get results in excel file",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    "404": {
+                        "description": "Poll not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -991,7 +1024,7 @@ const docTemplate = `{
                 "gender": {
                     "type": "string"
                 },
-                "level": {
+                "level_type": {
                     "type": "string"
                 },
                 "name": {
@@ -1010,9 +1043,6 @@ const docTemplate = `{
                     "type": "integer"
                 }
             }
-        },
-        "genprotos.Void": {
-            "type": "object"
         },
         "models.ConfirmRegistrationReq": {
             "type": "object",

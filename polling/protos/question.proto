@@ -40,7 +40,8 @@ message QuestionGetAllRes {
 }
 
 message QuestionGetAllReq {
-    Pagination Pagination = 1;
+    string poll_id = 1;
+    Pagination Pagination = 2;
 }
 
 message Question {

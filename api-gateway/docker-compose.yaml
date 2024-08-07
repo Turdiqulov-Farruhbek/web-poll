@@ -1,104 +1,27 @@
 version: '3.8'
 
 services:
-  auth-service:
-    container_name: auth_service 
+  admin-service:
+    container_name: admin_service 
     build: ./
     ports:
-      - "8088:8088"
+      - "8080:8080"
     networks:
-      - global-network
-    depends_on:
-      - postgres-db
-      - mongo-db
-      - redis
+      - mynetwork
 
-  migrate:
-    image: migrate/migrate
-    networks:
-      - global-network
-    volumes:
-      - ./migrations:/migrations
-    command: [ "-path", "/migrations", "-database",  
-                "postgres://postgres:root@delivery_auth:5432/delivery_auth?sslmode=disable", 
-                "up" ]
-    depends_on:
-      - postgres-db
-
-  postgres-db:
-    container_name: delivery_auth
-    image: postgres:latest
-    environment:
-      PGUSER: postgres
-      POSTGRES_PASSWORD: root
-      # PGDATA: /data/postgres
-      POSTGRES_DB: delivery_auth
-    volumes:
-      - db:/post-database/post-memory
-    ports:
-      - "5433:5432"
-    networks:
-      - global-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -d postgres"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-
-  mongo-db:
-    container_name: mongo_db
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: mongo
-      MONGO_INITDB_ROOT_PASSWORD: root
-    ports:
-      - "27018:27017"
-    networks:
-      - global-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "mongo --eval 'db.runCommand({ ping: 1 })'"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-    
   redis:
     image: redis:latest
     container_name: redis
     ports:
       - "6380:6379"
-    volumes:
-      - redis-data:/data
     networks:
-      - global-network
-
-  rabbitmq:
-    container_name: rabbitmq
-    image: rabbitmq:management
-    environment:
-      RABBITMQ_DEFAULT_USER: rabbitmq
-      RABBITMQ_DEFAULT_PASS: rabbitmq
-    ports:
-      - "5673:5672"
-      - "15673:15672"
-    networks:
-      - global-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD-SHELL", "rabbitmq-diagnostics -q ping"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-
-
+      - mynetwork
+      
 networks:
-  global-network:
+  mynetwork:
     external: true
-    name: global-network
-    driver: bridge
+    name: global-net
+    
 
 volumes:
   db:
-  redis-data:

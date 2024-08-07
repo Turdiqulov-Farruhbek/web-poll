@@ -9,6 +9,7 @@ type StorageI interface {
 	User() UserI
 	Poll() PollI
 	Question() QuestionI
+	Result() ResultI
 }
 
 type UserI interface {
@@ -34,4 +35,10 @@ type QuestionI interface {
 	Update(ctx context.Context, req *pb.QuestionUpdateReq) (*pb.Void, error)
 	Delete(ctx context.Context, req *pb.ByID) (*pb.Void, error)
 	GetAll(ctx context.Context, req *pb.QuestionGetAllReq) (*pb.QuestionGetAllRes, error)
+}
+
+type ResultI interface {
+	CreateResult(ctx context.Context, req *pb.CreateResultReq) (*pb.CreateResultRes, error)
+	SavePollAnswer(ctx context.Context, req *pb.SavePollAnswerReq) (*pb.Void, error)
+	GetResultsInExcel(ctx context.Context, req *pb.Void) (*pb.ExcelResultsRes, error)
 }

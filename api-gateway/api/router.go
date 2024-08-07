@@ -35,6 +35,9 @@ func NewRouter(PollConn *grpc.ClientConn) *gin.Engine {
 
 	// #################### POLLING SERVICE ######################### //
 	for_admin := protected.Group("/", middleware.IsAdminMiddleware())
+
+	for_admin.GET(("/results"), h.GetUserResultsInExcel)
+
 	poll := for_admin.Group("/poll")
 	{
 		poll.POST("/", h.CreatePoll)

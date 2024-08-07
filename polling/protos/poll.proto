@@ -36,10 +36,13 @@ message PollGetByIDRes {
 }
 
 message PollGetAllReq {
-    Pagination Pagination = 1;
+    string user_id = 1;
+    Pagination Pagination = 2;
 }
 
 message PollGetAllRes {
     repeated PollGetByIDRes poll = 1;
     Pagination pagination = 2;
 }
+
+

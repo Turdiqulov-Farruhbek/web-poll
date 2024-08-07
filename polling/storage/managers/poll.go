@@ -66,9 +66,15 @@ func (m *PollManager) Delete(ctx context.Context, req *pb.ByID) (*pb.Void, error
 }
 
 func (m *PollManager) GetAll(ctx context.Context, req *pb.PollGetAllReq) (*pb.PollGetAllRes, error) {
-	query := "SELECT id, poll_num, title, options FROM polls"
+	query := "SELECT id, poll_num, title, options FROM polls WHERE 1 = 1"
 	var args []interface{}
 	paramIndex := 1
+
+	if req.UserId != "" {
+		query += fmt.Sprintf(" AND user_id = %d", paramIndex)
+		args = append(args, req.UserId)
+		paramIndex++
+	}
 	if req.Pagination.Limit != 0 {
 		query += fmt.Sprintf(" LIMIT $%d", paramIndex)
 		args = append(args, req.Pagination.Limit)

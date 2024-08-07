@@ -1,4 +1,4 @@
-FROM golang:1.22.5 AS builder
+FROM golang:1.22.4 AS builder
 WORKDIR /app
 COPY go.mod ./
 COPY go.sum ./
@@ -11,5 +11,5 @@ WORKDIR /app
 COPY --from=builder /app/myapp .
 
 COPY .env .
-EXPOSE 8088
+EXPOSE 8080
 CMD ["./myapp"]

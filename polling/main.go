@@ -29,6 +29,7 @@ func main() {
 	pb.RegisterPollServiceServer(s, service.NewPollService(db))
 	pb.RegisterQuestionServiceServer(s, service.NewQuestionService(db))
 	pb.RegisterUserServiceServer(s, service.NewUserService(db))
+	pb.RegisterResultServiceServer(s, service.NewResultService(db))
 
 	log.Printf("server listening at %v", listener.Addr())
 	if err := s.Serve(listener); err != nil {

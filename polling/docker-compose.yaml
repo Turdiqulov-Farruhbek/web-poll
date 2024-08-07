@@ -1,56 +1,58 @@
 version: '3.8'
 
-migrate:
-  image: migrate/migrate
-  networks:
-    - global-network
-  volumes:
-    - ./migrations:/migrations
-  command: [ "-path", "/migrations", "-database",  
-              "postgres://postgres:root@polling_db:5432/polling-cont?sslmode=disable", 
-              "up" ]
-  depends_on:
-    - postgres-db
-
-postgres-db:
-  container_name: polling-cont
-  image: postgres:latest
-  environment:
-    PGUSER: postgres
-    POSTGRES_PASSWORD: root
-    # PGDATA: /data/postgres
-    POSTGRES_DB: polling_db
-  volumes:
-    - db:/post-database/post-memory
-  ports:
-    - "5434:5432"
-  networks:
-    - global-network
-  restart: unless-stopped
-  healthcheck:
-    test: ["CMD-SHELL", "pg_isready -d postgres"]
-    interval: 30s
-    timeout: 10s
-    retries: 5
-
 services:
-poll-service:
-  container_name: poll_service
-  build: ./
-  ports:
-    - "50051:50051"
-  networks:
-    - global-network
-  depends_on:
-    - postgres-db
-    - mongo-db
+  migrate:
+    image: migrate/migrate
+    networks:
+      - mynetwork
+    volumes:
+      - ./migrations:/migrations
+    command: ["-path", "/migrations", "-database", "postgres://postgres:root@postgres-db:5432/polling_db?sslmode=disable", "up"]
+    depends_on:
+      - postgres-db
 
+  postgres-db:
+    container_name: polling-cont
+    image: postgres:latest
+    environment:
+      PGUSER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: polling_db
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    networks:
+      - mynetwork
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  poll-service:
+    container_name: poll_service
+    build: .
+    ports:
+      - "50051:50051"
+    networks:
+      - mynetwork
+    depends_on:
+      - postgres-db
+    environment:
+      - DB_HOST=postgres-db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - DB_NAME=polling_db
 
 networks:
-global-network:
-  external: true
-  name: global-network
-  driver: bridge
+  mynetwork:
+    external: true
+    name: global-net
+    driver: bridge
+
 
 volumes:
-db:
+  db:
