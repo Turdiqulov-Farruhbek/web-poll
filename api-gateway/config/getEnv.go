@@ -27,7 +27,7 @@ func Load() Config {
 
 	config := Config{}
 
-	config.GATEWAY_SERVICE_PORT = cast.ToString(coalesce("GATEWAY_SERVICE_PORT", ":8090"))
+	config.GATEWAY_SERVICE_PORT = cast.ToString(coalesce("GATEWAY_SERVICE_PORT", ":8080"))
 	config.POLL_SERVICE_PORT = cast.ToString(coalesce("POLL_SERVICE_PORT", ":50051"))
 	config.DB_HOST = cast.ToString(coalesce("DB_HOST", "localhost"))
 	config.DB_PORT = cast.ToInt(coalesce("DB_PORT", 5432))

@@ -6,7 +6,6 @@ import (
 	"auth-service/models"
 	"context"
 	"net/http"
-	"fmt"
 
 	pb "auth-service/genprotos"
 
@@ -33,7 +32,6 @@ func (h *HTTPHandler) Register(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"Invalid request payload": err.Error()})
 		return
 	}
-	fmt.Println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n", req)
 	if !config.IsValidEmail(req.Email) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid email format"})
 		return

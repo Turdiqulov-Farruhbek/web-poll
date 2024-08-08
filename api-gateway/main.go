@@ -14,7 +14,7 @@ func main() {
 	config := cf.Load()
 	em := cf.NewErrorManager()
 
-	PollConn, err := grpc.NewClient(fmt.Sprintf("localhost%s", config.POLL_SERVICE_PORT), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	PollConn, err := grpc.NewClient(fmt.Sprintf("poll_service%s", config.POLL_SERVICE_PORT), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	em.CheckErr(err)
 	defer PollConn.Close()
 
