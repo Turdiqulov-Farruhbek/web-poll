@@ -1,0 +1,27 @@
+.test{
+    p{
+        font-size: 22px;
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-bottom: 5px;
+    }
+
+    .radio .ant-radio-wrapper {
+        font-size: 19px; /* Adjust this value as needed */
+        font-family: sans-serif;
+      }
+}
+
+@media screen and (max-width: 768px){
+    .radio .ant-radio-wrapper {
+        font-size: 14px !important; /* Adjust this value as needed */
+        font-family: sans-serif;
+      }
+
+      p{
+        font-size: 18px !important;
+        font-weight: 600;
+        font-family: sans-serif;
+        margin-bottom: 5px;
+    }
+}

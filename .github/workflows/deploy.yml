@@ -1,0 +1,48 @@
+name: Web polling service
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout our repository
+      uses: actions/checkout@v4
+
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd web-poll
+          git pull origin main
+          echo ---------------- PULLED CODE ----------------
+
+          cd polling
+          echo ---------------- DIR CHANGED TO POLLING ----------------
+          sudo docker compose down
+          echo ---------------- DOWN POLLING ----------------
+          sudo docker compose up -d
+          echo ---------------- UP POLLING ----------------
+
+          cd ../api-gateway
+          echo ---------------- DIR CHANGED TO API-GATEWAY ----------------
+          sudo docker compose down
+          echo ---------------- DOWN API-GATEWAY ----------------
+          sudo docker compose up -d
+          echo ---------------- UP API-GATEWAY ----------------
+
+          cd ../api-gateway-user
+          echo ---------------- DIR CHANGED TO API-GATEWAY-USER ----------------
+          sudo docker compose down
+          echo ---------------- DOWN API-GATEWAY-USER ----------------
+          sudo docker compose up -d
+          echo ---------------- UP API-GATEWAY-USER ----------------

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Results</title>
+</head>
+<body>
+    <button id="generateButton">Generate and Download Results</button>
+
+    <script>
+document.getElementById("generateButton").addEventListener("click", async function () {
+    try {
+        const response = await fetch("http://15.237.118.112:8080/files", {
+            method: "GET",
+            headers: {
+                "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InFvZGlyb3Zheml6YmVrMjQ5QGdtYWlsLmNvbSIsImV4cCI6MTcyMzUzNTA1MCwiaWF0IjoxNzIzNDQ4NjUwLCJyb2xlIjoiYWRtaW4iLCJ1c2VyX2lkIjoiYTFkZjk4NWEtZTU3NS00OTAzLTkzYzEtYTNlMTBhOTAwY2Q5In0.0lL0DLz80zxtkpQkulON_B8QweqYvhmbODgjUz-0jSM" // Include your token if needed
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            const fileURL = data.file_url;
+
+            // Trigger the download
+            const a = document.createElement('a');
+            a.href = fileURL;
+            a.download = 'results.xlsx'; // Set the file name
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        } else {
+            console.error("Failed to generate file");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package polling;
+
+option go_package = "genprotos/";
+
+import "protos/void.proto";
+import "protos/poll.proto";
+
+service QuestionService {
+    rpc Create(QuestionCreateReq) returns (Void);
+    rpc Update(QuestionUpdateReq) returns (Void);
+    rpc Delete(ByID) returns (Void);
+    rpc GetByID(ByID) returns (QuestionGetByIDRes);
+    rpc GetAll(QuestionGetAllReq) returns (QuestionGetAllRes);
+}
+
+message QuestionCreateReq {
+    optional string content = 3;
+    optional string poll_id = 4;
+}
+
+message QuestionUpdateReq {
+    optional string id = 1;
+    optional string content = 2;
+}
+
+message QuestionGetByIDRes {
+    optional string id = 1; 
+    optional string content = 2;
+    optional string poll_id = 3;
+}
+
+message QuestionGetAllRes {
+    repeated Question question = 1;
+    PollGetByIDRes poll = 2;
+}
+
+message QuestionGetAllReq {
+    optional string poll_id = 1;
+}
+
+message Question {
+    optional string id = 1; 
+    optional int32 num = 2;
+    optional string content = 3;
+    optional string poll_id = 4;
+}

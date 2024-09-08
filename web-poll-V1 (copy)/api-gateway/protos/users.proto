@@ -1,0 +1,97 @@
+syntax = "proto3";
+
+package polling;
+
+option go_package = "genprotos/";
+
+import "protos/void.proto";
+
+service UserService {
+    rpc Register(RegisterReq) returns (Void);
+    rpc ConfirmUser(ConfirmUserReq) returns (Void);
+    rpc Profile(GetProfileReq) returns (GetProfileResp);
+    rpc UpdatePassword(UpdatePasswordReq) returns (Void);
+    rpc IsEmailExists(IsEmailExistsReq) returns (IsEmailExistsResp);
+    rpc GetByID(GetProfileByIdReq) returns (GetProfileByIdResp);
+    rpc GetByEmail(ByEmail) returns (GetProfileByIdResp);
+}
+
+message ByEmail {
+    string email = 1;
+}
+
+message RegisterReq {
+    string name = 1;
+    string surname = 2;
+    GenderType gender = 3;
+    string email = 4;
+    string password = 5;
+    string phone_number = 6;
+    int32 working_experience = 7;
+    string level_type = 8;
+}
+
+message RegisterReqForSwagger{
+    string name = 1;
+    string surname = 2;
+    string gender = 3;
+    string email = 4;
+    string password = 5;
+    string phone_number = 6;
+    int32 working_experience = 7;
+    string level_type = 8;
+}
+
+message ConfirmUserReq {
+    string email = 1; // User's email to confirm
+}
+
+message GetProfileReq {
+    string email = 1; // User's email to retrieve the profile
+}
+
+message GetProfileResp {
+    string id = 1;          // User's unique identifier
+    string email = 2;       // User's email address
+    string password = 3;    // User's password (consider if you want to expose this)
+    string role = 4;        // User's role
+    bool is_confirmed = 5;  // Indicates if the user is confirmed
+}
+
+message UpdatePasswordReq {
+    string email = 1;       // User's email
+    string new_password = 2; // New password to set
+}
+
+message IsEmailExistsReq {
+    string email = 1; // User's email to check
+}
+
+message IsEmailExistsResp {
+    bool exists = 1; // Indicates if the email exists
+}
+
+message GetProfileByIdReq {
+    string id = 1; // User's unique identifier
+}
+
+message GetProfileByIdResp {
+    string id = 1;    // User's unique identifier
+    string email = 2; // User's email address
+    string role = 3;  // User's role
+}
+
+enum GenderType {
+    MALE = 0;
+    FEMALE = 1;
+}
+
+message UserExcelResp {
+    string name = 1;
+    string surname = 2;
+    string gender = 3;
+    string email = 4;
+    string phone_number = 6;
+    int32 working_experience = 7;
+    string level_type = 8;
+};

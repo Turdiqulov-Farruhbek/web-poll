@@ -1,0 +1,51 @@
+name: Web Polling Service
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Application
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Define ANSI color codes
+            RED='\033[0;31m'
+            GREEN='\033[0;32m'
+            YELLOW='\033[1;33m'
+            BLUE='\033[0;34m' 
+            NC='\033[0m'
+            function log_info {
+              echo -e "${YELLOW}$1${NC}"
+            }
+            function log_success {
+              echo -e "${GREEN}$1${NC}"
+            }
+            function log_error {
+              echo -e "${RED}$1${NC}"
+            }
+            # Pull latest code from GitHub
+            log_info "---------------- PULLING CODE FROM GITHUB ----------------"
+            cd poll-frontend
+            cd psixolog-user
+            git stash
+            git pull origin main
+            log_success "---------------- CODE PULLED FROM GITHUB -----------------"
+            sudo docker compose down
+            log_error "---------------- PROJECT STOPPED -----------------"
+            sudo docker compose build
+            sudo docker compose up --build -d
+            log_success "---------------- API-GATEWAY SERVICE STARTED ----------------"

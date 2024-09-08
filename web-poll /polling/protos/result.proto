@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package polling;
+
+option go_package = "genprotos/";
+
+import "protos/users.proto";
+import "protos/void.proto";
+import "protos/poll.proto";
+
+
+service ResultService {
+    rpc CreateResult(CreateResultReq) returns (CreateResultRes);
+    rpc SavePollAnswer(SavePollAnswerReq) returns (Void);
+    rpc GetResultsInExcel(Void) returns (ExcelResultsRes);
+    rpc GetPollResults(ByIDs) returns (ByIDResponse);
+}
+
+message ByIDs {
+    optional string result_id = 1;
+    optional string poll_id = 2;
+}
+
+message CreateResultReq {
+    optional string user_id = 1;
+    optional string poll_id = 2;
+}
+
+message CreateResultRes {
+    optional string result_id = 1;
+}
+
+message SavePollAnswerReq {
+    optional string result_id = 1;
+    optional string question_id = 2;
+    optional int32 question_num = 3;
+    optional int32 answer = 4;
+}
+
+message GetPoll {
+    optional string poll_id = 1;
+}
+
+message IncomingResult {
+    optional string poll_id = 1;
+    optional string user_id = 2;
+    repeated IncomingAnswer answers = 3;
+}
+
+message IncomingAnswer {
+    optional int32 num = 1;
+    optional string question_id = 2;
+    optional int32 answer_point = 3;
+}
+
+message ExcelResultsRes {
+    repeated ResultRes results = 1;
+}
+
+message ResultRes {
+    UserExcelResp user = 1;
+    optional int32 poll_num = 2;
+    repeated IncomingAnswer answers = 3;
+}
+
+message ByIDResponse {
+    repeated IncomingAnswer answers = 1;
+    repeated Feedback feed = 2;
+}

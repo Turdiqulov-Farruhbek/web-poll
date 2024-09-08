@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package polling;
+
+option go_package = "genprotos/";
+
+import "protos/void.proto";
+
+
+service PollService {
+    rpc Create(PollCreateReq) returns (Void);
+    rpc Update(PollUpdateReq) returns (Void);
+    rpc Delete(ByID) returns (Void);
+    rpc GetByID(ByID) returns (PollGetByIDRes);
+    rpc GetAll(PollGetAllReq) returns (PollGetAllRes);
+}
+
+message PollCreateReq {
+    optional string title = 1;
+    repeated Option options = 2;
+    repeated Feedback feedbacks = 3; 
+}
+
+message Feedback {
+    optional int32 from = 1;  
+    optional int32 to = 2;
+    optional string text = 3;
+}
+
+message Option {
+    optional string variant = 1;
+    optional int32 ball = 2;
+}
+
+message PollUpdateReq {
+    optional string id = 1;
+    optional string title = 2;
+    repeated Option options = 3;
+    repeated Feedback feedbacks = 4;
+
+}
+
+message PollUpdateReqSwag {
+    optional string title = 1;
+    repeated Option options = 2;
+    repeated Feedback feedbacks = 3;
+
+}
+
+message PollGetByIDRes {
+    optional string id = 1;
+    optional int32 poll_num = 2;
+    optional string title = 3;
+    repeated Option options = 4;
+    repeated Feedback feedback = 5;
+}
+
+message PollGetAllReq {
+    optional string user_id = 1;
+}
+
+message PollGetAllRes {
+    repeated PollGetByIDRes poll = 1;
+}

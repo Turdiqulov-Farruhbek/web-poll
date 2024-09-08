@@ -1,0 +1,46 @@
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .delete-icon {
+    display: none;
+  }
+  
+  .menu-item:hover .delete-icon {
+    display: inline;
+    position: absolute;
+    right: 20px;
+    top: 11px;
+    font-size: 16px;
+    z-index: 999999;
+  }
+  
+  .ant-menu-item-selected {
+    background-color: #1890ff !important;
+  }
+
+
+  .logo{
+    width: 70px;
+    height: 70px;
+  }
+
+.logo-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.logo-wrapper > p{
+  font-size: 20px;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.logo-hidden{
+  display: none !important;
+}
+
+

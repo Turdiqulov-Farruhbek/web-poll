@@ -1,0 +1,149 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    height: 100px !important;
+    padding: 15px 30px !important;
+}
+
+.select{
+    width: 200px !important;
+}
+
+
+.demo-logo{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    img{
+        width: 70px;
+        border-radius: 12px;
+        height: 100%;
+    }
+
+    p{
+        font-size: 20px;
+        font-family: sans-serif;
+        font-weight: 600;
+        color: white;
+    }
+}
+
+.about{
+    margin-top: 70px;
+    p{
+        text-align: justify;
+        margin-top: 20px;
+        font-size: 17px;
+        font-family: sans-serif;
+    }
+}
+
+.footer-wrapper{
+    position: relative;
+    z-index: 999999;
+    border-radius: 12px;
+    background-color: #0C3B2E;
+    display: flex;
+    justify-content: center;
+    gap: 0 100px;
+    padding: 15px;
+    align-items: start;
+    flex-wrap: wrap;
+
+    .footer-one{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        div{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+
+            p{
+                font-size: 22px;
+                font-weight: 900;
+                color: white;
+            }
+        }
+
+        div:last-child{
+            margin-top: 10px;
+            display: flex;
+            gap: 30px;
+            
+            justify-content: start;
+            a{
+                color: white;
+                font-size: 12px;
+                font-weight: 500;
+                font-family: sans-serif;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .demo-logo{
+        img{
+            width: 40px;
+            border-radius: 12px;
+            height: 50%;
+        }
+    
+        p{
+            font-size: 14px !important;
+        }
+    }
+
+    .select{
+        width: 100px !important;
+    }
+
+    .about{
+        p{
+            font-size: 14px !important;
+        }
+    }
+
+    .logout{
+        p{
+            display: none;
+        }
+    }
+
+    .footer-one{
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        div:last-child{
+            flex-direction: column;
+        }
+    }
+
+    .footer-wrapper{
+        padding: 10px 0;
+        
+    }
+
+    .adress{
+        a{
+            font-size: 12px !important;
+
+            p{
+                font-size: 12px !important;
+            }
+        }
+        p{
+            font-size: 12px !important;
+        }
+    }
+
+}
+
+

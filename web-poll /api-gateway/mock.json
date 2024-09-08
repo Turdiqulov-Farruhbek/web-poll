@@ -1,0 +1,442 @@
+[
+    {
+        "email": "",
+        "gender": "male",
+        "level_type": "junior",
+        "name": "Azizbek",
+        "password": "#Password7777",
+        "phone_number": "+998888888888",
+        "surname": "Qodirov",
+        "working_experience": 2
+    },
+    {
+        "feedbacks": [
+            {
+                "from": 0,
+                "text": "0-10 ball to'pladingiz",
+                "to": 10
+            },
+            {
+                "from": 11,
+                "text": "11-20 ball to'pladingiz",
+                "to": 20
+            },
+            {
+                "from": 21,
+                "text": "21-30 ball to'pladingiz",
+                "to": 30
+            },
+            {
+                "from": 31,
+                "text": "31-40 ball to'pladingiz",
+                "to": 40
+            },
+            {
+                "from": 41,
+                "text": "41-50 ball to'pladingiz",
+                "to": 50
+            }
+        ],
+        "options": [
+            {
+                "ball": 1,
+                "variant": "Hech qachon"
+            },
+            {
+                "ball": 2,
+                "variant": "Odatda"
+            },
+            {
+                "ball": 3,
+                "variant": "Har doim"
+            }
+        ],
+        "title": "20-so'rovnoma"
+    },
+    {
+        "content": "Turli topshiriqlarni bajarishda muvaffaqiyat qozonganman, lekin, ularni bajarishdan avval buni qila olmayman degan qo‘rquv bo‘lar edi",
+        "num": 1,
+        "poll_id": "1509efa1-58af-4e02-82f2-4823d7ef9fab"
+    },
+    [
+        {
+            "poll_id": "e3a2920e-8f23-4603-8086-3dfd8cffaffb",
+            "user_id": "2525acff-6bd0-4426-a6eb-eba5cbb94780",
+            "answers": [
+                {
+                    "num": 1,
+                    "answer_point": 1
+                },
+                {
+                    "num": 2,
+                    "answer_point": 2
+                },
+                {
+                    "num": 3,
+                    "answer_point": 1
+                },
+                {
+                    "num": 4,
+                    "answer_point": 3
+                },
+                {
+                    "num": 5,
+                    "answer_point": 2
+                },
+                {
+                    "num": 6,
+                    "answer_point": 3
+                },
+                {
+                    "num": 7,
+                    "answer_point": 2
+                },
+                {
+                    "num": 8,
+                    "answer_point": 1
+                },
+                {
+                    "num": 9,
+                    "answer_point": 3
+                },
+                {
+                    "num": 10,
+                    "answer_point": 2
+                }
+            ]
+        }
+    ]
+]
+
+{
+    "answers": [
+        {
+            "answer_point": 1,
+            "question_id": "9bb37b6c-3b1d-488b-8e1c-0df93903ec4a"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "09976236-c8e2-4407-a67a-dd75a8242975"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "fbd59b70-136d-4d31-914c-2d51bc6bd251"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "af5d5011-6292-4be4-960f-c98932a76669"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "1fd35579-d95a-4b95-8e77-227e5547c3b3"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "7beeeb83-8ede-4339-ae69-1c1843f45452"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "5b85fd6e-71f3-41e7-b719-93ef86239758"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "d07fafb0-b677-4149-be2f-c996d05e3df0"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "1cd76c90-ce85-4184-8be1-6c0559a5fda4"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "17758ccb-badb-4c59-9c7f-e32604a5a719"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "1a9032c2-e205-45a9-9594-895d30573a4c"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "6e4ac629-c916-4db5-b330-40fd171ae89d"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "721a8d52-5586-4b9c-bb69-a5ebc3d5cac0"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "9b18a8e4-5748-4533-9774-97d7aedd87e5"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "1c632f81-41d7-4499-a1c0-6b8f463df62f"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b5e0960f-fc06-4a49-b959-3b1f84950dba"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "6e4ae909-93a1-4655-aa47-2d8ae111046b"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "4a559a6b-7635-4d66-aa35-96e2b0f8f09c"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "7a4fd43f-25c0-40ba-997d-776d6a3edee4"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "e0d4a2ae-cfb9-4c50-9417-cfdff5a79688"
+        }
+    ],
+    "poll_id": "89d025d1-8639-47fa-9d3a-8710646bea89",
+    "user_id": "3e517a7f-674d-409c-9777-53eb85702509"
+}
+
+
+
+
+
+
+
+
+
+
+
+{
+    "answers": [
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf904"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf905"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf906"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf907"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf908"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf909"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf90a"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf90b"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf90c"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf90d"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf90e"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf90f"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf910"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf911"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf912"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf913"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf914"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf915"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf916"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf917"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf918"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf919"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf91a"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf91b"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf91c"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf91d"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf91e"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf91f"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf920"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf921"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf922"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf923"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf924"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf925"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf926"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf927"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf928"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf929"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf92a"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf92b"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf92c"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf92d"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf92e"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf92f"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf930"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf931"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf932"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf933"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf934"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf935"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf936"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf937"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf938"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf939"
+        },
+        {
+            "answer_point": 1,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf93a"
+        },
+        {
+            "answer_point": 2,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf93b"
+        },
+        {
+            "answer_point": 3,
+            "question_id": "b8aeedae-be34-464d-a016-0ca6755cf93c"
+        }
+    ],
+    "poll_id": "e3a2920e-8f23-4603-8086-3dfd8cffaffb",
+    "user_id": "3e517a7f-674d-409c-9777-53eb85702509"
+}
+
