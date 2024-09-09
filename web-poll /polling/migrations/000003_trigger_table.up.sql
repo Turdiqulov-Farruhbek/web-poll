@@ -105,12 +105,12 @@ END
 $$;
 
 -- Modify INSERT to use the next available poll number
-CREATE OR REPLACE FUNCTION insert_poll(p_title VARCHAR, p_options JSONB, p_feedbacks JSONB) RETURNS VOID AS $$
+CREATE OR REPLACE FUNCTION insert_poll(p_title VARCHAR, p_subtitle VARCHAR, p p_options JSONB, p_feedbacks JSONB) RETURNS VOID AS $$
 DECLARE
     next_num INT;
 BEGIN
     next_num := get_next_poll_num();
-    INSERT INTO polls (poll_num, title, options, feedbacks) VALUES (next_num, p_title, p_options, p_feedbacks);
+    INSERT INTO polls (poll_num, title, subtitle, options, feedbacks) VALUES (next_num, p_title, p_subtitle, p_options, p_feedbacks);
 END;
 $$ LANGUAGE plpgsql;
 

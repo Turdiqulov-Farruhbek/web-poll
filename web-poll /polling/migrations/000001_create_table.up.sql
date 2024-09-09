@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS polls (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     poll_num INT,
     title VARCHAR(255) NOT NULL,
+    subtitle TEXT NOT NULL,
     options JSONB NOT NULL,
     feedbacks JSONB NOT NULL
 );
@@ -53,3 +54,6 @@ CREATE TABLE IF NOT EXISTS poll_answers (
     question_id UUID REFERENCES questions(id),
     answer INT
 );
+
+
+

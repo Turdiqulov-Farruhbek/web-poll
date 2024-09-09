@@ -17,8 +17,9 @@ service PollService {
 
 message PollCreateReq {
     optional string title = 1;
-    repeated Option options = 2;
-    repeated Feedback feedbacks = 3; 
+    optional string subtitle = 2;
+    repeated Option options = 3;
+    repeated Feedback feedbacks = 4; 
 }
 
 message Feedback {
@@ -35,8 +36,9 @@ message Option {
 message PollUpdateReq {
     optional string id = 1;
     optional string title = 2;
-    repeated Option options = 3;
-    repeated Feedback feedbacks = 4;
+    optional string subtitle = 3;
+    repeated Option options = 4;
+    repeated Feedback feedbacks = 5;
 
 }
 
@@ -51,8 +53,9 @@ message PollGetByIDRes {
     optional string id = 1;
     optional int32 poll_num = 2;
     optional string title = 3;
-    repeated Option options = 4;
-    repeated Feedback feedback = 5;
+    optional string subtitle = 4;
+    repeated Option options = 5;
+    repeated Feedback feedback = 6;
 }
 
 message PollGetAllReq {

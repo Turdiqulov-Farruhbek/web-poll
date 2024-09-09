@@ -1023,6 +1023,9 @@
                         "$ref": "#/definitions/genprotos.Option"
                     }
                 },
+                "subtitle": {
+                    "type": "string"
+                },
                 "title": {
                     "type": "string"
                 }
@@ -1059,6 +1062,9 @@
                 },
                 "poll_num": {
                     "type": "integer"
+                },
+                "subtitle": {
+                    "type": "string"
                 },
                 "title": {
                     "type": "string"

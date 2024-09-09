@@ -1034,6 +1034,9 @@ const docTemplate = `{
                         "$ref": "#/definitions/genprotos.Option"
                     }
                 },
+                "subtitle": {
+                    "type": "string"
+                },
                 "title": {
                     "type": "string"
                 }
@@ -1070,6 +1073,9 @@ const docTemplate = `{
                 },
                 "poll_num": {
                     "type": "integer"
+                },
+                "subtitle": {
+                    "type": "string"
                 },
                 "title": {
                     "type": "string"
