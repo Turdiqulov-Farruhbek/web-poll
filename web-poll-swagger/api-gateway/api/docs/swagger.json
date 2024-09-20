@@ -1023,6 +1023,9 @@
                         "$ref": "#/definitions/genprotos.Option"
                     }
                 },
+                "subtitle": {
+                    "type": "string"
+                },
                 "title": {
                     "type": "string"
                 }
@@ -1060,6 +1063,9 @@
                 "poll_num": {
                     "type": "integer"
                 },
+                "subtitle": {
+                    "type": "string"
+                },
                 "title": {
                     "type": "string"
                 }
@@ -1079,6 +1085,9 @@
                     "items": {
                         "$ref": "#/definitions/genprotos.Option"
                     }
+                },
+                "subtitle": {
+                    "type": "string"
                 },
                 "title": {
                     "type": "string"
@@ -1155,6 +1164,9 @@
         "genprotos.RegisterReqForSwagger": {
             "type": "object",
             "properties": {
+                "age": {
+                    "type": "string"
+                },
                 "email": {
                     "type": "string"
                 },
@@ -1165,6 +1177,9 @@
                     "type": "string"
                 },
                 "name": {
+                    "type": "string"
+                },
+                "nation": {
                     "type": "string"
                 },
                 "password": {

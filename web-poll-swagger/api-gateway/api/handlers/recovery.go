@@ -43,7 +43,7 @@ func (h *HTTPHandler) SendConfirmationCode(email string) error {
 
 	err = rdb.Set(context.Background(), email, code, 3*time.Minute).Err()
 	if err != nil {
-		return fmt.Errorf("server error storing confirmation code in Redis", "dtc", err.Error())
+		return fmt.Errorf("server error storing confirmation code in Redis %v", err.Error())
 	}
 	return nil
 }

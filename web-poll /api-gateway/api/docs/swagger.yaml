@@ -91,6 +91,8 @@ definitions:
         items:
           $ref: '#/definitions/genprotos.Option'
         type: array
+      subtitle:
+        type: string
       title:
         type: string
     type: object
@@ -139,6 +141,8 @@ definitions:
     type: object
   genprotos.RegisterReqForSwagger:
     properties:
+      age:
+        type: string
       email:
         type: string
       gender:
@@ -146,6 +150,8 @@ definitions:
       level_type:
         type: string
       name:
+        type: string
+      nation:
         type: string
       password:
         type: string

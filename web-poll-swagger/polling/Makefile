@@ -36,3 +36,6 @@ up:
 
 build:
 	docker compose up --build
+
+psql-con:
+	docker exec -it polling-cont psql -U postgres -d polling_db;

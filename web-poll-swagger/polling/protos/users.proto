@@ -24,22 +24,26 @@ message RegisterReq {
     string name = 1;
     string surname = 2;
     GenderType gender = 3;
-    string email = 4;
-    string password = 5;
-    string phone_number = 6;
-    int32 working_experience = 7;
-    string level_type = 8;
+    string age = 4;
+    string nation = 5;
+    string email = 6;
+    string password = 7;
+    string phone_number = 8;
+    int32 working_experience = 9;
+    string level_type = 10;
 }
 
 message RegisterReqForSwagger{
     string name = 1;
     string surname = 2;
     string gender = 3;
-    string email = 4;
-    string password = 5;
-    string phone_number = 6;
-    int32 working_experience = 7;
-    string level_type = 8;
+    string age = 4;
+    string nation = 5;
+    string email = 6;
+    string password = 7;
+    string phone_number = 8;
+    int32 working_experience = 9;
+    string level_type = 10;
 }
 
 message ConfirmUserReq {
@@ -87,11 +91,14 @@ enum GenderType {
 }
 
 message UserExcelResp {
-    string name = 1;
+    string name = 1;    
     string surname = 2;
     string gender = 3;
-    string email = 4;
-    string phone_number = 6;
-    int32 working_experience = 7;
-    string level_type = 8;
+    string age = 4;
+    string nation = 5;
+    string email = 6;
+    string password = 7;
+    string phone_number = 8;
+    int32 working_experience = 9;
+    string level_type = 10;
 };

@@ -5,3 +5,29 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhcnJ1aGJla3R1cmRpcXVsb3ZAZ21
 user:
 
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indqd3hqYnVmaHd0dHNlbXB0cUBuYm1iYi5jb20iLCJleHAiOjE3MjUwNDk3NzIsImlhdCI6MTcyNDc5MDU3Miwicm9sZSI6InVzZXIiLCJ1c2VyX2lkIjoiM2U1MTdhN2YtNjc0ZC00MDljLTk3NzctNTNlYjg1NzAyNTA5In0.unFlIg7bBiLz2sWwxuMgn66RDCRm7t9KWaS7foymB40
+
+{
+  "answers": [
+    {
+      "answer_point": 18,
+      "num": 1,
+      "question_id": "b8aeedae-be34-464d-a016-0ca6755cf904"
+    }
+  ],
+  "poll_id": "e3a2920e-8f23-4603-8086-3dfd8cffaffb",
+  "user_id": "280b6bab-b1ab-44ab-b9ad-6c0419d84713"
+}
+
+
+{
+  "age": "31",
+  "email": "farruhbekturdiqulov@gmail.com",
+  "gender": "male",
+  "level_type": "junior",
+  "name": "Farruhbek",
+  "nation": "o`zbek",
+  "password": "77777",
+  "phone_number": "+998973211221",
+  "surname": "string",
+  "working_experience": 2
+}

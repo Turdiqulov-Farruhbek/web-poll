@@ -74,11 +74,13 @@ func (h *HTTPHandler) Register(c *gin.Context) {
 
 	_, err = h.User.Register(c,
 		&pb.RegisterReq{
-			Password:          req.Password,
 			Name:              req.Name,
-			Email:             req.Email,
 			Surname:           req.Surname,
 			Gender:            pb.GenderType(gender),
+			Age:               req.Age,
+			Nation:            req.Nation,
+			Email:             req.Email,
+			Password:          req.Password,
 			PhoneNumber:       req.PhoneNumber,
 			WorkingExperience: req.WorkingExperience,
 			LevelType:         req.LevelType,

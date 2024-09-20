@@ -2,7 +2,6 @@ package handlers
 
 import (
 	pb "auth-service/genprotos"
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,6 +25,7 @@ func (h *HTTPHandler) SendAnswers(c *gin.Context) {
 		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
+
 	poll := pb.CreateResultReq{
 		UserId: req.UserId,
 		PollId: req.PollId,
@@ -38,21 +38,31 @@ func (h *HTTPHandler) SendAnswers(c *gin.Context) {
 	}
 
 	for _, i := range req.Answers {
-		_, err := h.Result.SavePollAnswer(c, &pb.SavePollAnswerReq{ResultId: id.ResultId, QuestionId: i.QuestionId, Answer: i.AnswerPoint})
+		_, err := h.Result.SavePollAnswer(c, &pb.SavePollAnswerReq{
+			ResultId:   id.ResultId,
+			QuestionId: i.QuestionId,
+			Answer:     i.AnswerPoint,
+		})
 		if err != nil {
 			c.JSON(400, gin.H{"error": "Couldn't save answer", "details": err.Error()})
 			return
 		}
 	}
 
-	feedResult, err := h.Result.GetPollResults(c, &pb.ByIDs{ResultId: id.ResultId, PollId: poll.PollId})
+	feedResult, err := h.Result.GetPollResults(c, &pb.ByIDs{
+		ResultId: id.ResultId,
+		PollId:   poll.PollId,
+	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Couldn't get results", "details": err.Error()})
 		return
 	}
-	ressss := *feedResult.Feed
-	res := ressss[6:]
-	fmt.Println([]byte(res))
 
+	res := feedResult.Feed
+	// Agar feedResult.Feed slice bo'lsa, uni to'g'ridan-to'g'ri ishlatasiz
+	if len(feedResult.Feed) > 6 {
+		res = feedResult.Feed[6:] // 6-indeksdan keyingi elementlarni oling
+	}
 	c.JSON(201, gin.H{"message": "Successfully posted", "id": id.ResultId, "feedback": res})
+
 }

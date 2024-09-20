@@ -66,7 +66,7 @@ func (h *HTTPHandler) GetUserResultsInExcel(c *gin.Context) {
 		}
 
 		headers := []string{
-			"Ismi", "Familiyasi", "Jinsi", "Email", "Telefon raqami",
+			"Ismi", "Familiyasi", "Jinsi", "Yoshi", "Millati", "Email", "Telefon raqami",
 			"Ish tajribasi", "Darajasi", "So'rovnoma raqami", "Jami natijalar",
 		}
 
@@ -92,6 +92,8 @@ func (h *HTTPHandler) GetUserResultsInExcel(c *gin.Context) {
 				result.User.Name,
 				result.User.Surname,
 				result.User.Gender,
+				result.User.Age,
+                result.User.Nation,
 				result.User.Email,
 				result.User.PhoneNumber,
 				result.User.WorkingExperience,

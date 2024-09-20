@@ -100,7 +100,6 @@ func (m *PollManager) Update(ctx context.Context, poll *pb.PollUpdateReq) (*pb.V
 func (m *PollManager) GetByID(ctx context.Context, req *pb.ByID) (*pb.PollGetByIDRes, error) {
 	query := "SELECT id, poll_num, title, subtitle, options, feedbacks FROM polls WHERE id = $1"
 	row := m.Conn.QueryRowContext(ctx, query, req.Id)
-
 	var (
 		id        string
 		pollNum   int32
@@ -109,7 +108,7 @@ func (m *PollManager) GetByID(ctx context.Context, req *pb.ByID) (*pb.PollGetByI
 		options   []byte
 		feedbacks []byte
 	)
-
+	
 	err := row.Scan(&id, &pollNum, &title, &subtitle, &options, &feedbacks)
 	if err != nil {
 		if err == sql.ErrNoRows {
@@ -142,7 +141,6 @@ func (m *PollManager) GetByID(ctx context.Context, req *pb.ByID) (*pb.PollGetByI
 	// Unmarshal Feedbacks JSON
 	var feedbackList []*pb.Feedback
 	if len(feedbacks) > 0 {
-		fmt.Println(string(feedbacks))
 		var rawFeedbacks []map[string]interface{}
 		if err := json.Unmarshal(feedbacks, &rawFeedbacks); err != nil {
 			return nil, fmt.Errorf("failed to unmarshal feedbacks: %s", err.Error())
@@ -164,7 +162,6 @@ func (m *PollManager) GetByID(ctx context.Context, req *pb.ByID) (*pb.PollGetByI
 			feedbackList = append(feedbackList, feedback)
 		}
 	}
-	fmt.Println(feedbackList)
 
 	return &pb.PollGetByIDRes{
 		Id:       &id,
@@ -259,3 +256,4 @@ func (m *PollManager) GetAll(ctx context.Context, req *pb.PollGetAllReq) (*pb.Po
 		Poll: polls,
 	}, nil
 }
+

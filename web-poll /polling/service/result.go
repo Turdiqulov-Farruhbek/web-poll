@@ -21,6 +21,7 @@ func (s *ResultService) CreateResult(ctx context.Context, req *pb.CreateResultRe
 }
 
 func (s *ResultService) SavePollAnswer(ctx context.Context, req *pb.SavePollAnswerReq) (*pb.Void, error) {
+	// text := "Ajoyib, surovnomani ishlashda davom eting !"
 	return s.storage.Result().SavePollAnswer(ctx, req)
 }
 
@@ -61,13 +62,13 @@ func (s *ResultService) GetPollResults(ctx context.Context, req *pb.ByIDs) (*pb.
 
 		// Extrovert va Nevrotizm natijalarini to'g'ri to'ldirish
 		if extrovert > 12 && extrovert > nevrotizm {
-			feed = "Extrovert"
+			feed = "Extrovert ekansiz: Ajoyib, surovnomani ishlashda davom eting 😊 !"
 		} else if extrovert < 12 && nevrotizm < 12 {
-			feed = "Introvert"
+			feed = "Introvert ekansiz: Ajoyib, surovnomani ishlashda davom eting 😊 !"
 		} else if extrovert == nevrotizm && extrovert > 12 && nevrotizm < 12 {
-			feed = "Extrovert va Nevrotizm"
+			feed = "Extrovert va Nevrotizm ekansiz: Ajoyib, surovnomani ishlashda davom eting 😊 !"
 		} else {
-			feed = "Nevrotizm"
+			feed = "Nevrotizm ekansiz: Ajoyib, surovnomani ishlashda davom eting 😊 !"
 		}
 
 		// Javobni qaytarish
@@ -101,8 +102,8 @@ func (s *ResultService) GetPollResults(ctx context.Context, req *pb.ByIDs) (*pb.
 		// Feedback to'ldirish
 		resAnswer.Feed = []*pb.Feedback{{From: &a, To: &b, Text: &feed}}
 	}
-	
-	text := "Afsus balingiz yetarli emas"
+
+	text := "Ajoyib, surovnomani ishlashda davom eting 😊 !"
 	if feed == "" {
 		resAnswer.Feed = []*pb.Feedback{{From: &a, To: &b, Text: &text}}
 	}

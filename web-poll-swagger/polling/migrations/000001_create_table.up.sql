@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(255) NOT NULL,
     surname VARCHAR(255) NOT NULL,
     gender gender_type NOT NULL,
+    age VARCHAR(50) NOT NULL,
+    nation VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
     phone_number VARCHAR(15) NOT NULL,
@@ -27,8 +29,9 @@ CREATE TABLE IF NOT EXISTS polls (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     poll_num INT,
     title VARCHAR(255) NOT NULL,
-    options JSONB NOT NULL,
-    feedbacks JSONB NOT NULL
+    subtitle TEXT NOT NULL,
+    options JSONB,
+    feedbacks JSONB 
 );
 
 -- Create questions table
@@ -53,3 +56,6 @@ CREATE TABLE IF NOT EXISTS poll_answers (
     question_id UUID REFERENCES questions(id),
     answer INT
 );
+
+
+

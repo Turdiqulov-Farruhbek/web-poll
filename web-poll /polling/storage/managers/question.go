@@ -82,13 +82,13 @@ func (m *QuestionManager) GetAll(ctx context.Context, req *pb.QuestionGetAllReq)
 	}
 
 	// Query to get poll details
-	pollQuery := "SELECT id, poll_num, title, options FROM polls WHERE id = $1"
+	pollQuery := "SELECT id, poll_num, title, subtitle, options FROM polls WHERE id = $1"
 	var poll pb.PollGetByIDRes
 	var pollNum int32
 	var options []byte
-	var title, pollId string
+	var title, subtitle, pollId string
 
-	err = m.Conn.QueryRowContext(ctx, pollQuery, req.PollId).Scan(&pollId, &pollNum, &title, &options)
+	err = m.Conn.QueryRowContext(ctx, pollQuery, req.PollId).Scan(&pollId, &pollNum, &title, &subtitle, &options)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return &pb.QuestionGetAllRes{
@@ -124,6 +124,7 @@ func (m *QuestionManager) GetAll(ctx context.Context, req *pb.QuestionGetAllReq)
 	poll.Id = &pollId
 	poll.PollNum = &pollNum
 	poll.Title = &title
+	poll.Subtitle = &subtitle
 	poll.Options = optionList
 
 	return &pb.QuestionGetAllRes{
@@ -131,6 +132,3 @@ func (m *QuestionManager) GetAll(ctx context.Context, req *pb.QuestionGetAllReq)
 		Poll:     &poll,
 	}, nil
 }
-
-
-

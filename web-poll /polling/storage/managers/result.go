@@ -41,7 +41,7 @@ func (m *ResultManager) SavePollAnswer(ctx context.Context, req *pb.SavePollAnsw
 func (m *ResultManager) GetResultsInExcel(ctx context.Context, req *pb.Void) (*pb.ExcelResultsRes, error) {
 	query := `
 		SELECT 
-			u.name, u.surname, u.gender, u.email, u.phone_number, u.working_experience, u.level_type,
+			u.name, u.surname, u.gender, u.age, u.nation, u.email, u.phone_number, u.working_experience, u.level_type,
 			p.poll_num,
 			q.num AS question_num, q.id, pa.answer
 		FROM 
@@ -66,10 +66,10 @@ func (m *ResultManager) GetResultsInExcel(ctx context.Context, req *pb.Void) (*p
 
 	resultsMap := make(map[string]*pb.ResultRes)
 	for rows.Next() {
-		var name, surname, gender, email, phoneNumber, level_type, questionId string
+		var name, surname, gender, age, nation, email, phoneNumber, level_type, questionId string
 		var workingExperience, pollNum, questionNum, answer int32
 
-		err := rows.Scan(&name, &surname, &gender, &email, &phoneNumber, &workingExperience, &level_type, &pollNum, &questionNum, &questionId, &answer)
+		err := rows.Scan(&name, &surname, &gender, &age, &nation, &email, &phoneNumber, &workingExperience, &level_type, &pollNum, &questionNum, &questionId, &answer)
 		if err != nil {
 			return nil, err
 		}
@@ -79,6 +79,8 @@ func (m *ResultManager) GetResultsInExcel(ctx context.Context, req *pb.Void) (*p
 			Surname:           surname,
 			Gender:            gender,
 			Email:             email,
+			Age:               age,
+			Nation:            nation,
 			PhoneNumber:       phoneNumber,
 			WorkingExperience: workingExperience,
 			LevelType:         level_type,
