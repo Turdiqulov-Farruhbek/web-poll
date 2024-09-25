@@ -20,6 +20,7 @@ func main() {
 	em.CheckErr(err)
 	defer db.PgClient.Close()
 
+
 	listener, err := net.Listen("tcp", config.POLL_SERVICE_PORT)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
